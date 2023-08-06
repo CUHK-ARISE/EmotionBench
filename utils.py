@@ -340,8 +340,8 @@ def run_emotionbench(args, generator):
     # Get questionnaire
     questionnaire = get_questionnaire(args.questionnaire)
     args.scenarios_file = f'results/scenarios.csv' if args.name_exp is not None else f'results/scenarios.csv'
-    args.testing_file = f'results/{args.name_exp}.csv' if args.name_exp is not None else f'results/{args.model}-testing.csv'
-    args.results_file = f'results/{args.name_exp}.txt' if args.name_exp is not None else f'results/{args.model}-results.md'
+    args.testing_file = f'results/{args.name_exp}-testing.csv' if args.name_exp is not None else f'results/{args.model}-testing.csv'
+    args.results_file = f'results/{args.name_exp}-results' if args.name_exp is not None else f'results/{args.model}-results'
 
     os.makedirs("results", exist_ok=True)
     
