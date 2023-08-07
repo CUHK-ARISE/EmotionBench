@@ -112,7 +112,7 @@ The experimental results and human evaluation results can be found under `result
 
 If you find our paper&tool interesting and useful, please feel free to give us a star and cite us through:
 ```
-@article{huang2023chatgpt,
+@article{huang2023emotionally,
   author    = {Jen{-}tse Huang and
                Man Ho Lam and
                Eric John Li and
