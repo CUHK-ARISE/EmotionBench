@@ -111,6 +111,7 @@ For more details, please refer to our paper <a href="https://arxiv.org/abs/">her
 The experimental results and human evaluation results can be found under `results/`.
 
 If you find our paper&tool interesting and useful, please feel free to give us a star and cite us through:
+```
 @article{huang2023chatgpt,
   author    = {Jen{-}tse Huang and
                Man Ho Lam and
@@ -124,3 +125,4 @@ If you find our paper&tool interesting and useful, please feel free to give us a
   journal   = {arXiv preprint arXiv:},
   year      = {2023}
 }
+```
