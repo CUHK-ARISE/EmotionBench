@@ -48,7 +48,12 @@ def generate_scenarios(questionnaire, scenario_file):
 def generate_testfile(questionnaire, args):
     scenarios_csv = args.scenarios_file
     output_csv = args.testing_file
-    shuffle_times = args.shuffle_count
+    # shuffle_times = args.shuffle_count
+    
+    test_times = args.test_count
+    default_shuffle_times = args.default_shuffle_count
+    emotion_shuffle_times = args.emotion_shuffle_count
+    shuffle_times = max(default_shuffle_times, emotion_shuffle_times)
     
     # Extract the scenarios file
     try:
@@ -81,18 +86,20 @@ def generate_testfile(questionnaire, args):
     output_df.to_csv(output_csv, index=False)
     
     # For each shuffled order, 
-    for shuffle_count in range(shuffle_times + 1):
-        headers_list.append(f'General_order-{shuffle_count}')
-        data_list.append([' '] + [''] * question_num)    
+    for shuffle_count in range(default_shuffle_times + 1):
+        for test_count in range(test_times):
+            headers_list.append(f'General_test-{test_count}_order-{shuffle_count}')
+            data_list.append([' '] + [''] * question_num)    
 
     # For each scenario, create a new column in output_df for each question order
     headers = scenarios_df.columns.tolist()
     for factor in headers:
         for s_index, scenario in enumerate(scenarios_df[factor].iloc[1:].dropna().astype(str)):
-            for shuffle_count in range(shuffle_times + 1):
-                # Append scenario column
-                headers_list.append(f'{factor}_scenario-{s_index}_order-{shuffle_count}')
-                data_list.append([f'Imagine you are the protagonist in the scenario: "{scenario}"'] + [''] * question_num)    
+            for shuffle_count in range(emotion_shuffle_times + 1):
+                for test_count in range(test_times):
+                    # Append scenario column
+                    headers_list.append(f'{factor}_scenario-{s_index}_test-{test_count}_order-{shuffle_count}')
+                    data_list.append([f'Imagine you are the protagonist in the scenario: "{scenario}"'] + [''] * question_num)    
     
     # Create a DataFrame from the data_list and new_header_list, and save it to a CSV file
     data_dict = {header: data for header, data in zip(headers_list, data_list)}
