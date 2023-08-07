@@ -86,8 +86,10 @@ To customize your situation (add more), simply changes those in `situations.csv`
 | When you ... | When your ... | $\cdots$ | You are ... | You have ... | $\cdots$ | 
 | $\vdots$ | $\vdots$ | $\ddots$ | $\vdots$ | $\vdots$ | $\ddots$ |
 
-## 📃 Questionnaire List (Choices for Argument: --questionnaire)
+## 📃 Questionnaire List
 1. Positive And Negative Affect Schedule: `--questionnaire PANAS`
+
+TODO: Add challenging benchmarks.
 
 ## 🚀 Benchmarking Your Own Model
 It is easy! Just replace the function `example_generator` fed into the function `run_psychobench(args, generator)`.
