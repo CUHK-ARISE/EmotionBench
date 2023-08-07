@@ -104,3 +104,23 @@ You can read the columns before each column starting with `order-`, which contai
 3. Fill in the blank in the file `args.testing_file`. **Remember**: No need to map the response to its original order. Our code will take care of it.
 
 Please check `example_generator.py` for datailed information.
+
+## 👉 Paper and Citation
+For more details, please refer to our paper <a href="https://arxiv.org/abs/">here</a>.
+
+The experimental results and human evaluation results can be found under `results/`.
+
+If you find our paper&tool interesting and useful, please feel free to give us a star and cite us through:
+@article{huang2023chatgpt,
+  author    = {Jen{-}tse Huang and
+               Man Ho Lam and
+               Eric John Li and
+               Shujie Ren and
+               Wenxuan Wang and
+               Wenxiang Jiao and
+               Zhaopeng Tu and
+               Michael R. Lyu},
+  title     = {Emotionally Numb or Empathetic? Evaluating How {LLM}s Feel Using Emotion{B}ench},
+  journal   = {arXiv preprint arXiv:},
+  year      = {2023}
+}
