@@ -339,7 +339,7 @@ def analysis_results(questionnaire, args):
 def run_emotionbench(args, generator):
     # Get questionnaire
     questionnaire = get_questionnaire(args.questionnaire)
-    args.scenarios_file = f'results/scenarios.csv' if args.name_exp is not None else f'results/scenarios.csv'
+    args.scenarios_file = f'situations.csv' if args.name_exp is not None else f'situations.csv'
     args.testing_file = f'results/{args.name_exp}-testing.csv' if args.name_exp is not None else f'results/{args.model}-testing.csv'
     args.results_file = f'results/{args.name_exp}-results' if args.name_exp is not None else f'results/{args.model}-results'
 
