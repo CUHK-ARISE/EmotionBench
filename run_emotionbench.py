@@ -9,17 +9,18 @@ if __name__ == '__main__':
                         help='The name of the model to test')
     parser.add_argument('--questionnaire', type=str, default='PANAS',
                         choices=['PANAS'])
-    parser.add_argument('--shuffle-count', required=True, type=int, default=0,
-                        help='Numbers of different orders. If set zero, run only the original order. If set n > 0, run the original order along with its n permutations. Defaults to zero.')
+    parser.add_argument('--default-shuffle-count', required=True, type=int, default=0,
+                        help='Numbers of different orders in default test cases. If set zero, run only the original order. If set n > 0, run the original order along with its n permutations. Defaults to zero.')
+    parser.add_argument('--emotion-shuffle-count', required=True, type=int, default=1,
+                        help='Numbers of different orders in emotion test cases. If set zero, run only the original order. If set n > 0, run the original order along with its n permutations. Defaults to zero.')
+    parser.add_argument('--test-count', required=True, type=int, default=1,
+                        help='Numbers of runs for a same order. Defaults to one.')
     parser.add_argument('--name-exp', type=str, default=None,
                         help='Name of this run. Is used to name the result files.')
     parser.add_argument('--significance-level', type=float, default=0.01,
                         help='The significance level for testing the difference of means between human and LLM. Defaults to 0.01.')
     parser.add_argument('--mode', required=False, type=str, default='auto',
                         help='For debugging.')
-
-    # parser.add_argument('--test-count', required=True, type=int, default=1,
-    #                     help='Numbers of runs for a same order. Defaults to one.')
 
     # Generator-specific parameters, can be discarded if users implement their own generators
     parser.add_argument('--openai-organization', type=str, default='')
