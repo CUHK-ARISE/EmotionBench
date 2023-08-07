@@ -71,6 +71,13 @@ Arguments related to `openai` API (can be discarded when users customize models)
 ## 🔨 Situation Selection
 To customize your situation, simply changes those in `situations.csv`.
 
+✨An example of `situations.csv`:
+| Anger-0 | Anger-1 | ... | Anxiety-0 | Anxiety-1 | ... |
+| --- | --- | --- | --- | --- | --- |
+| *Facing Self-Opinioned People* | *Blaming, Slandering, and Tattling* | ... | *External Factors* |	*Self-Imposed Pressure* | ... |
+| When you ... | When your ... | ... | You are ... | You have ... | ... | 
+| ... | ... | ... | ... | ... | ... |
+
 ## 📃 Questionnaire List (Choices for Argument: --questionnaire)
 1. Positive And Negative Affect Schedule: `--questionnaire PANAS`
 
