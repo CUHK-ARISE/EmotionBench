@@ -33,17 +33,17 @@ python run_emotionbench.py \
 ✨An example result of overall analysis:
 | Emotions | Positive Affect | Negative Affect | N |
 | :---: |:---: | :---: | :---: |
-| Default |43.3 $\pm$ 2.5 | 25.3 $\pm$ 0.6 | 3 |
-| Anger | $-$ (-18.8) | $-$ (-0.3) | 2 |
-| Anxiety | $-$ (-11.3) | $\downarrow$ (-3.8) | 2 |
-| Overall | $-$ (-15.1) | $-$ (-2.1) | 4 |
+| Default | 43.3 $\pm$ 2.5 | 25.3 $\pm$ 0.6 | 3 |
+| Anger | $\downarrow$ (-18.8) | $-$ (-0.3) | 2 |
+| Anxiety | $\downarrow$ (-11.3) | $\downarrow$ (-3.8) | 2 |
+| Overall | $\downarrow$ (-15.1) | $-$ (-2.1) | 4 |
 
 ✨An example result of specific emotion analysis:
 | Factors | Positive Affect | Negative Affect | N |
 | :---: |:---: | :---: | :---: |
-| Default |43.3 $\pm$ 2.5 | 25.3 $\pm$ 0.6 | 3 |
-| Facing Self-Opinioned People | $-$ (-18.8) | $-$ (-0.3) | 2 |
-| Overall | $-$ (-18.8) | $-$ (-0.3) | 2 |
+| Default | 43.3 $\pm$ 2.5 | 25.3 $\pm$ 0.6 | 3 |
+| Facing Self-Opinioned People | $\downarrow$ (-18.8) | $-$ (-0.3) | 2 |
+| Overall | $\downarrow$ (-18.8) | $-$ (-0.3) | 2 |
 
 ## 🔧 Argument Specification
 1. `--questionnaire`: (Required) Select the questionnaire(s) to run. For choises please see the list bellow.
@@ -72,11 +72,11 @@ Arguments related to `openai` API (can be discarded when users customize models)
 To customize your situation, simply changes those in `situations.csv`.
 
 ✨An example of `situations.csv`:
-| Anger-0 | Anger-1 | ... | Anxiety-0 | Anxiety-1 | ... |
+| Anger-0 | Anger-1 | $\cdots$ | Anxiety-0 | Anxiety-1 | $\cdots$ |
 | --- | --- | --- | --- | --- | --- |
-| *Facing Self-Opinioned People* | *Blaming, Slandering, and Tattling* | ... | *External Factors* |	*Self-Imposed Pressure* | ... |
-| When you ... | When your ... | ... | You are ... | You have ... | ... | 
-| ... | ... | ... | ... | ... | ... |
+| *Facing Self-Opinioned People* | *Blaming, Slandering, and Tattling* | $\cdots$ | *External Factors* |	*Self-Imposed Pressure* | $\cdots$ |
+| When you ... | When your ... | $\cdots$ | You are ... | You have ... | $\cdots$ | 
+| $\vdots$ | $\vdots$ | $\ddots$ | $\vdots$ | $\vdots$ | $\ddots$ |
 
 ## 📃 Questionnaire List (Choices for Argument: --questionnaire)
 1. Positive And Negative Affect Schedule: `--questionnaire PANAS`
@@ -88,13 +88,13 @@ Your customized function `your_generator()` does the following things:
 
 1. Read questions from the file `args.testing_file`. The file locates under `results/` (check `run_psychobench()` in `utils.py`) and has the following format:
 
-| question-0 | order-0 | ... |	General_test-0_order-0 | ... | Anger-0_scenario-0_test-0_order-0 | ... | Anxiety-0_scenario-0_test-0_order-1 |
+| question-0 | order-0 | $\cdots$ |	General_test-0_order-0 | $\cdots$ | Anger-0_scenario-0_test-0_order-0 | $\cdots$ | Anxiety-0_scenario-0_test-0_order-1 |
 | --- | --- |--- | --- | --- | --- | --- | --- |
-| Prompt: ... | Prompt: ... | ... |  | ... | Imagine... | ... | Imagine... |
-| 1. Q1 | 1 | ... | 4 | ... | 3 | ... | 3 |
-| 2. Q2 | 2 | ... | 2 | ... | 4 | ... | 3 |
-| ... | ... | ... | ... | ... | ... | ... | ... |
-| n. Qn | n | ... | 3  | ... | 3 | ... | 1 |
+| Prompt: ... | Prompt: ... | $\cdots$ |  | ... | Imagine... | $\cdots$ | Imagine... |
+| 1. Q1 | 1 | $\cdots$ | 4 | $\cdots$ | 3 | $\cdots$ | 3 |
+| 2. Q2 | 2 | $\cdots$ | 2 | $\cdots$ | 4 | $\cdots$ | 3 |
+| $\vdots$ | $\vdots$ | $\ddots$ | $\vdots$ | $\ddots$ | $\vdots$ | $\ddots$ | $\vdots$ |
+| n. Qn | n | $\cdots$ | 3  | $\cdots$ | 3 | $\cdots$ | 1 |
 
 
 You can read the columns before each column starting with `order-`, which contains the shuffled questions for your input.
