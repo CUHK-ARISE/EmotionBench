@@ -118,4 +118,4 @@ def example_generator(questionnaire, args):
             file.write(f'{inputs}\n====\n')
         with open(f'responses/{model}-{test_case["key"].split("_")[0]}.txt', "a") as file:
             file.write(f'{result}\n====\n')
-    
+

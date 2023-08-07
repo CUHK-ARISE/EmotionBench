@@ -5,8 +5,6 @@ import random
 import scipy.stats as stats
 from statistics import mean, stdev
 
-# Extract the specific questionnaire from json
-import json
 
 def get_questionnaire(questionnaire_name):
     try:
@@ -64,7 +62,6 @@ def generate_scenarios(scenario_file, select_time, target_emotions):
     return output_df
 
 
-# def generate_testfile(questionnaire, shuffle, scenarios_csv, output_csv='testing.csv'):
 def generate_testfile(questionnaire, args):
     scenarios_csv = args.scenarios_file
     output_csv = args.testing_file
@@ -75,7 +72,7 @@ def generate_testfile(questionnaire, args):
     shuffle_times = max(default_shuffle_times, emotion_shuffle_times)
     
     # Extract the scenarios file
-    emotions_selection = args.emotions_selection
+    emotions_selection = args.emotion
     select_times = args.select_count
     if emotions_selection != 'Customize':
         scenarios_df = generate_scenarios(scenarios_csv, select_times, emotions_selection.split(','))
@@ -387,3 +384,4 @@ def run_emotionbench(args, generator):
     # Analysis
     if args.mode in ['analysis', 'auto']:
         analysis_results(questionnaire, args)
+

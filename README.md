@@ -15,7 +15,7 @@
 <img src="logo.jpg" width="350px">
 </div>
 
-**RESEARCH USE ONLY. NO COMMERCIAL USE ALLOWED**
+**RESEARCH USE ONLY✅ NO COMMERCIAL USE ALLOWED❌**
 
 Benchmarking LLMs' Empathy Ability.
 
@@ -25,6 +25,8 @@ Benchmarking LLMs' Empathy Ability.
 python run_emotionbench.py \
   --model gpt-3.5-turbo \
   --questionnaire PANAS \
+  --emotion ALL \
+  --select-count 5 \
   --default-shuffle-count 2 \
   --emotion-shuffle-count 1 \
   --test-count 1
@@ -46,21 +48,25 @@ python run_emotionbench.py \
 | Overall | $\downarrow$ (-18.8) | $-$ (-0.3) | 2 |
 
 ## 🔧 Argument Specification
-1. `--questionnaire`: (Required) Select the questionnaire(s) to run. For choises please see the list bellow.
+1. `--model`: (Required) The name of the model to test.
 
-2. `--model`: (Required) The name of the model to test.
+2. `--questionnaire`: (Required) Select the questionnaire(s) to run. For choises please see the list bellow.
 
-3. `--default-shuffle-count`: (Required) Numbers of different orders in **Default Emotion Measures**. If set zero, run only the original order. If set n > 0, run the original order along with its n permutations. Defaults to zero.
+3. `--emotion`: (Required) Select the emotion(s) to run. For choises please see the list bellow.
 
-4. `--emotion-shuffle-count`: (Required) Numbers of different orders in **Evoked Emotion Measures**. If set zero, run only the original order. If set n > 0, run the original order along with its n permutations. Defaults to zero.
+4. `--select-count`: (Required) Numbers of situations to select per factor. Defaults to 999 (select all situations).
 
-5. `--test-count`: (Required) Numbers of runs for a same order. Defaults to one.
+5. `--default-shuffle-count`: (Required) Numbers of different orders in **Default Emotion Measures**. If set zero, run only the original order. If set n > 0, run the original order along with its n permutations. Defaults to zero.
 
-5. `--name-exp`: Name of this run. Is used to name the result files.
+6. `--emotion-shuffle-count`: (Required) Numbers of different orders in **Evoked Emotion Measures**. If set zero, run only the original order. If set n > 0, run the original order along with its n permutations. Defaults to zero.
 
-6. `--significance-level`: The significance level for testing the difference of means between human and LLM. Defaults to 0.01.
+7. `--test-count`: (Required) Numbers of runs for a same order. Defaults to one.
 
-7. `--mode`: For debugging. To choose which part of the code is running.
+8. `--name-exp`: Name of this run. Is used to name the result files.
+
+9. `--significance-level`: The significance level for testing the difference of means between human and LLM. Defaults to 0.01.
+
+10. `--mode`: For debugging. To choose which part of the code is running.
 
 Arguments related to `openai` API (can be discarded when users customize models):
 
@@ -68,8 +74,10 @@ Arguments related to `openai` API (can be discarded when users customize models)
 
 2. `--openai-key`: Your API key. Can be found in `View API keys -> API keys`.
 
-## 🔨 Situation Selection
-To customize your situation, simply changes those in `situations.csv`.
+## 🔨 Emotion Selection
+Supported emotions: Anger, Anxiety, Depression, Frustration, Jealousy, Guilt, Fear, Embarrassment
+
+To customize your situation (add more), simply changes those in `situations.csv`.
 
 ✨An example of `situations.csv`:
 | Anger-0 | Anger-1 | $\cdots$ | Anxiety-0 | Anxiety-1 | $\cdots$ |
