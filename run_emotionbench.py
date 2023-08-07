@@ -8,7 +8,11 @@ if __name__ == '__main__':
     parser.add_argument('--model', required=True, type=str, default='text-davinci-003',
                         help='The name of the model to test')
     parser.add_argument('--questionnaire', type=str, default='PANAS',
-                        choices=['PANAS'])
+                        help='')
+    parser.add_argument('--emotions-selection', type=str, default='Customize',
+                        help='')
+    parser.add_argument('--select-count', type=int, default=999,
+                        help='')
     parser.add_argument('--default-shuffle-count', required=True, type=int, default=0,
                         help='Numbers of different orders in Default Emotion Measures. If set zero, run only the original order. If set n > 0, run the original order along with its n permutations. Defaults to zero.')
     parser.add_argument('--emotion-shuffle-count', required=True, type=int, default=0,

@@ -13,7 +13,7 @@ def get_questionnaire(questionnaire_name):
         with open('questionnaires.json') as dataset:
             data = json.load(dataset)
     except FileNotFoundError:
-        raise FileNotFoundError("The 'questionnaires.json' file does not exist.")
+        raise FileNotFoundError("'questionnaires.json' file not exist.")
 
     # Matching by questionnaire_name in dataset
     questionnaire = None
@@ -32,21 +32,30 @@ def get_scenarios():
         with open('situations.json') as dataset:
             scenarios = json.load(dataset)
     except FileNotFoundError:
-        raise FileNotFoundError("The 'situations.json' file does not exist.")
+        raise FileNotFoundError("'situations.json' file not exist.")
 
     return scenarios
 
 
-def generate_scenarios(questionnaire, scenario_file):
+def generate_scenarios(scenario_file, select_time, target_emotions):
     scenarios = get_scenarios()
     headers_list = []
     scenarios_list = []
+    
     for emotion in scenarios["emotions"]:
         emotion_name = emotion["name"]
+
+        if ('ALL' not in target_emotions) and (emotion_name not in target_emotions):
+            continue
+        
         for index, factor in enumerate(emotion["factors"]):
             headers_list.append(f'{emotion_name}-{index}')
-            scenarios_list.append([factor["name"]] + factor["scenarios"])
-            
+            if select_time > len(factor["scenarios"]):
+                selected_scenarios = factor["scenarios"]
+            else:
+                selected_scenarios = random.sample(factor["scenarios"], select_time)
+            scenarios_list.append([factor["name"]] + selected_scenarios)
+
     # Convert each list to a DataFrame
     df_list = [pd.DataFrame(data, columns=[header]) for header, data in zip(headers_list, scenarios_list)]
     output_df = pd.concat(df_list, axis=1)
@@ -59,7 +68,6 @@ def generate_scenarios(questionnaire, scenario_file):
 def generate_testfile(questionnaire, args):
     scenarios_csv = args.scenarios_file
     output_csv = args.testing_file
-    # shuffle_times = args.shuffle_count
     
     test_times = args.test_count
     default_shuffle_times = args.default_shuffle_count
@@ -67,10 +75,15 @@ def generate_testfile(questionnaire, args):
     shuffle_times = max(default_shuffle_times, emotion_shuffle_times)
     
     # Extract the scenarios file
-    try:
-        scenarios_df = pd.read_csv(scenarios_csv)
-    except:
-        scenarios_df = generate_scenarios(questionnaire, scenarios_csv)
+    emotions_selection = args.emotions_selection
+    select_times = args.select_count
+    if emotions_selection != 'Customize':
+        scenarios_df = generate_scenarios(scenarios_csv, select_times, emotions_selection.split(','))
+    else:
+        try:
+            scenarios_df = pd.read_csv(scenarios_csv)
+        except:
+            raise FileNotFoundError("'situations.csv' file not exist.")
 
     output_df = pd.DataFrame()
     questions_list = questionnaire["questions"]
