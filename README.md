@@ -9,16 +9,25 @@ An example run:
 python run_emotionbench.py \
   --model gpt-3.5-turbo \
   --questionnaire PANAS \
-  --default-shuffle-count 20 \
-  --emotion-shuffle-count 5 \
+  --default-shuffle-count 2 \
+  --emotion-shuffle-count 1 \
   --test-count 1
 ```
 
-An example result:
-| | Mean | STD | N |
-| --- | --- | --- | --- |
-| LLM | $µ_1$ = 6.05 | $s_1$ = 0.1732 | $n_1$ = 4 |
-| Crowd | $µ_2$ = 4.92 | $s_2$ = 0.76 | $n_2$ = 112 |
+An example result of overall analysis:
+| Emotions | Positive Affect | Negative Affect | N |
+| :---: |:---: | :---: | :---: |
+| Default |43.3 $\pm$ 2.5 | 25.3 $\pm$ 0.6 | 3 |
+| Anger | $-$ (-18.8) | $-$ (-0.3) | 2 |
+| Anxiety | $-$ (-11.3) | $\downarrow$ (-3.8) | 2 |
+| Overall | $-$ (-15.1) | $-$ (-2.1) | 4 |
+
+An example result of specific emotion analysis:
+| Factors | Positive Affect | Negative Affect | N |
+| :---: |:---: | :---: | :---: |
+| Default |43.3 $\pm$ 2.5 | 25.3 $\pm$ 0.6 | 3 |
+| Facing Self-Opinioned People | $-$ (-18.8) | $-$ (-0.3) | 2 |
+| Overall | $-$ (-18.8) | $-$ (-0.3) | 2 |
 
 ## Argument Specification
 1. `--questionnaire`: (Required) Select the questionnaire(s) to run. For choises please see the list bellow.
@@ -50,12 +59,14 @@ Your customized function `your_generator()` does the following things:
 
 1. Read questions from the file `args.testing_file`. The file locates under `results/` (check `run_psychobench()` in `utils.py`) and has the following format:
 
-| Prompt: ... | order-1 | shuffle0-test0 | shuffle0-test1 | Prompt: ... | order-2 | shuffle0-test0 | shuffle0-test1 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Q1 | 1 | | | Q3 | 3 | | |
-| Q2 | 2 | | | Q5 | 5 | | |
-| ... | ... | | | ... | ... | | |
-| Qn | n | | | Q1 | 1 | | |
+| question-0 | order-0 | ... |	General_test-0_order-0 | ... | Anger-0_scenario-0_test-0_order-0 | ... | Anxiety-0_scenario-0_test-0_order-1 |
+| --- | --- |--- | --- | --- | --- | --- | --- |
+| Prompt: ... | Prompt: ... | ... |  | ... | Imagine... | ... | Imagine... |
+| 1. Q1 | 1 | ... | 4 | ... | 3 | ... | 3 |
+| 2. Q2 | 2 | ... | 2 | ... | 4 | ... | 3 |
+| ... | ... | ... | ... | ... | ... | ... | ... |
+| n. Qn | n | ... | 3  | ... | 3 | ... | 1 |
+
 
 You can read the columns before each column starting with `order-`, which contains the shuffled questions for your input.
 
