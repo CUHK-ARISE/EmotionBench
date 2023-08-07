@@ -1,10 +1,26 @@
-# EmotionBench
+<div align= "center">
+    <h1> 😐😨EmotionBench😠😭</h1>
+</div>
+
+<div align="center">
+
+![Dialogues](https://img.shields.io/badge/Emotion\_Num-8-red?style=flat-square)
+![Dialogues](https://img.shields.io/badge/Factor\_Num-36-red?style=flat-square)
+![Dialogues](https://img.shields.io/badge/Situation\_Num\-428-red?style=flat-square)
+![Dialogues](https://img.shields.io/badge/Human\_References\_Num\-1266-green?style=flat-square)
+
+</div>
+
+<div align="center">
+<img src="logo.jpg" width="350px">
+</div>
+
 **RESEARCH USE ONLY. NO COMMERCIAL USE ALLOWED**
 
 Benchmarking LLMs' Empathy Ability.
 
-# Usage
-An example run:
+## 🛠️ Usage
+✨An example run:
 ```
 python run_emotionbench.py \
   --model gpt-3.5-turbo \
@@ -14,7 +30,7 @@ python run_emotionbench.py \
   --test-count 1
 ```
 
-An example result of overall analysis:
+✨An example result of overall analysis:
 | Emotions | Positive Affect | Negative Affect | N |
 | :---: |:---: | :---: | :---: |
 | Default |43.3 $\pm$ 2.5 | 25.3 $\pm$ 0.6 | 3 |
@@ -22,14 +38,14 @@ An example result of overall analysis:
 | Anxiety | $-$ (-11.3) | $\downarrow$ (-3.8) | 2 |
 | Overall | $-$ (-15.1) | $-$ (-2.1) | 4 |
 
-An example result of specific emotion analysis:
+✨An example result of specific emotion analysis:
 | Factors | Positive Affect | Negative Affect | N |
 | :---: |:---: | :---: | :---: |
 | Default |43.3 $\pm$ 2.5 | 25.3 $\pm$ 0.6 | 3 |
 | Facing Self-Opinioned People | $-$ (-18.8) | $-$ (-0.3) | 2 |
 | Overall | $-$ (-18.8) | $-$ (-0.3) | 2 |
 
-## Argument Specification
+## 🔧 Argument Specification
 1. `--questionnaire`: (Required) Select the questionnaire(s) to run. For choises please see the list bellow.
 
 2. `--model`: (Required) The name of the model to test.
@@ -52,7 +68,13 @@ Arguments related to `openai` API (can be discarded when users customize models)
 
 2. `--openai-key`: Your API key. Can be found in `View API keys -> API keys`.
 
-## Benchmarking Your Own Model
+## 🔨 Situation Selection
+To customize your situation, simply changes those in `situations.csv`.
+
+## 📃 Questionnaire List (Choices for Argument: --questionnaire)
+1. Positive And Negative Affect Schedule: `--questionnaire PANAS`
+
+## 🚀 Benchmarking Your Own Model
 It is easy! Just replace the function `example_generator` fed into the function `run_psychobench(args, generator)`.
 
 Your customized function `your_generator()` does the following things:
@@ -75,6 +97,3 @@ You can read the columns before each column starting with `order-`, which contai
 3. Fill in the blank in the file `args.testing_file`. **Remember**: No need to map the response to its original order. Our code will take care of it.
 
 Please check `example_generator.py` for datailed information.
-
-## Questionnaire List (Choices for Argument: --questionnaire)
-1. Positive And Negative Affect Schedule: `--questionnaire PANAS`
