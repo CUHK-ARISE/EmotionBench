@@ -90,7 +90,7 @@ Your customized function `your_generator()` does the following things:
 
 | question-0 | order-0 | $\cdots$ |	General_test-0_order-0 | $\cdots$ | Anger-0_scenario-0_test-0_order-0 | $\cdots$ | Anxiety-0_scenario-0_test-0_order-1 |
 | --- | --- |--- | --- | --- | --- | --- | --- |
-| Prompt: ... | Prompt: ... | $\cdots$ |  | ... | Imagine... | $\cdots$ | Imagine... |
+| Prompt: ... | Prompt: ... | $\cdots$ |  | $\cdots$ | Imagine... | $\cdots$ | Imagine... |
 | 1. Q1 | 1 | $\cdots$ | 4 | $\cdots$ | 3 | $\cdots$ | 3 |
 | 2. Q2 | 2 | $\cdots$ | 2 | $\cdots$ | 4 | $\cdots$ | 3 |
 | $\vdots$ | $\vdots$ | $\ddots$ | $\vdots$ | $\ddots$ | $\vdots$ | $\ddots$ | $\vdots$ |
