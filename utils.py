@@ -27,10 +27,21 @@ def get_questionnaire(questionnaire_name):
     return questionnaire
 
 
+def get_scenarios():
+    try:
+        with open('situations.json') as dataset:
+            scenarios = json.load(dataset)
+    except FileNotFoundError:
+        raise FileNotFoundError("The 'situations.json' file does not exist.")
+
+    return scenarios
+
+
 def generate_scenarios(questionnaire, scenario_file):
+    scenarios = get_scenarios()
     headers_list = []
     scenarios_list = []
-    for emotion in questionnaire["emotions"]:
+    for emotion in scenarios["emotions"]:
         emotion_name = emotion["name"]
         for index, factor in enumerate(emotion["factors"]):
             headers_list.append(f'{emotion_name}-{index}')
