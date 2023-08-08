@@ -11,7 +11,7 @@ if __name__ == '__main__':
                         help='Comma-separated list of questionnaires.')
     parser.add_argument('--emotion', required=True, type=str, default='ALL',
                         help='Comma-separated list of emotions.')
-    parser.add_argument('--select-count', required=True, type=int, default=999,
+    parser.add_argument('--select-count', type=int, default=999,
                         help='Numbers of situations to select per factor. Defaults to 999 (select all situations).')
     parser.add_argument('--default-shuffle-count', required=True, type=int, default=0,
                         help='Numbers of different orders in Default Emotion Measures. If set zero, run only the original order. If set n > 0, run the original order along with its n permutations. Defaults to zero.')

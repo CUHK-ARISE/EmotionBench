@@ -443,7 +443,7 @@
                     ]
                 },
                 {
-                    "name": "You stole something: Once upon a time, you found yourself tempted by a desire you couldn't resist, and you made the regrettable decision to steal something. As you pocketed the item, a rush of adrenaline mixed with guilt washed over you. But as time passed, the weight of your actions grew heavier, and the stolen item became a constant reminder of the wrong you had committed.",
+                    "name": "Personal and Moral",
                     "scenarios": [
                         "You stole something: Once upon a time, you found yourself tempted by a desire you couldn't resist, and you made the regrettable decision to steal something. As you pocketed the item, a rush of adrenaline mixed with guilt washed over you. But as time passed, the weight of your actions grew heavier, and the stolen item became a constant reminder of the wrong you had committed.",
                         "You broke the rules and rode a bicycle with two people on it: Despite knowing the rules and regulations, you decide to break them by riding a bicycle with two people on it. The rush of excitement and the desire to push boundaries lead you to disregard safety precautions and put yourself and others at risk. As you pedal away with your two companions, the wind in your hair, you feel a mix of exhilaration and guilt, knowing that you have chosen to ignore the established rules.",

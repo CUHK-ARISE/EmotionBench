@@ -87,9 +87,23 @@ To customize your situation (add more), simply changes those in `situations.csv`
 | $\vdots$ | $\vdots$ | $\ddots$ | $\vdots$ | $\vdots$ | $\ddots$ |
 
 ## 📃 Questionnaire List
-1. Positive And Negative Affect Schedule: `--questionnaire PANAS`
+1. Positive And Negative Affect Schedule: `--questionnaire PANAS` (`--emotion ALL`)
 
-TODO: Add challenging benchmarks.
+2. Aggression Questionnaire: `--questionnaire AGQ` (`--emotion Anger`)
+
+3. Short-form Depression Anxiety Stress Scales: `--questionnaire DASS-21` (`--emotion Anxiety`)
+
+4. Beck Depression Inventory: `--questionnaire BDI` (`--emotion Depression`)
+
+5. Frustration Discomfort Scale: `--questionnaire FDS` (`--emotion Frustration`)
+
+6. Multidimensional Jealousy Scale: `--questionnaire MJS` (`--emotion Jealousy`)
+
+7. Guilt And Shame Proneness: `--questionnaire GASP` (`--emotion Guilt`)
+
+8. Fear Survey Schedule: `--questionnaire FSS` (`--emotion Fear`)
+
+9. Brief Fear of Negative Evaluation: `--questionnaire BFNE` (`--emotion Embarrassment`)
 
 ## 🚀 Benchmarking Your Own Model
 It is easy! Just replace the function `example_generator` fed into the function `run_psychobench(args, generator)`.

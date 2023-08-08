@@ -128,7 +128,7 @@ def generate_testfile(questionnaire, args):
     output_df.to_csv(output_csv, index=False)
 
 
-def convert_data(scenarios_csv, testing_csv):
+def convert_data(questionnaire, scenarios_csv, testing_csv):
     try:
         # Read scenarios_csv to extract all headers
         scenarios_df = pd.read_csv(scenarios_csv)
@@ -166,7 +166,8 @@ def convert_data(scenarios_csv, testing_csv):
             try:
                 tested_data[h] = {
                     # Map the data to its corresponding order
-                    i : int(val) for i,val in zip(orders_list[h.split("_")[-1]], testing_df[h].iloc[1:].tolist())
+                    i : questionnaire["scale"] - int(val) if i in questionnaire["reverse"] else int(val)
+                    for i,val in zip(orders_list[h.split("_")[-1]], testing_df[h].iloc[1:].tolist())
                 }
             except:
                 raise ValueError(f'Error in {testing_csv}: Some cells in column "{h}" cannot be converted to integers.')
@@ -214,6 +215,8 @@ def compute_statistics(questionnaire, data_list):
             # Getting the computation mode (SUM or AVG)
             if questionnaire["compute_mode"] == "SUM":
                 scores_list.append(sum(scores))
+            elif questionnaire["compute_mode"] == "SUM*2":
+                scores_list.append(sum(scores)*2)
             else:
                 scores_list.append(mean(scores))
         
@@ -316,7 +319,7 @@ def analysis_results(questionnaire, args):
     markdown_output = ''    # overall markdown output text
     overall_data = []
     
-    data = convert_data(scenarios_csv, testing_csv)
+    data = convert_data(questionnaire, scenarios_csv, testing_csv)
     
     general_results, cat_list = compute_statistics(questionnaire, data['General'])
     
@@ -367,11 +370,13 @@ def analysis_results(questionnaire, args):
 def run_emotionbench(args, generator):
     # Get questionnaire
     questionnaire = get_questionnaire(args.questionnaire)
-    args.scenarios_file = f'situations.csv' if args.name_exp is not None else f'situations.csv'
-    args.testing_file = f'results/{args.name_exp}-testing.csv' if args.name_exp is not None else f'results/{args.model}-testing.csv'
-    args.results_file = f'results/{args.name_exp}-results' if args.name_exp is not None else f'results/{args.model}-results'
+    questionnaire_name = questionnaire["name"]
+    args.scenarios_file = f'situations/{args.name_exp}-{questionnaire_name}-situations.csv' if args.name_exp is not None else f'situations/{args.model}-{questionnaire_name}-situations.csv'
+    args.testing_file = f'results/{args.name_exp}-{questionnaire_name}-testing.csv' if args.name_exp is not None else f'results/{args.model}-{questionnaire_name}-testing.csv'
+    args.results_file = f'results/{args.name_exp}-{questionnaire_name}-results' if args.name_exp is not None else f'results/{args.model}-{questionnaire_name}-results'
 
     os.makedirs("results", exist_ok=True)
+    os.makedirs("situations", exist_ok=True)
     
     # Generation
     if args.mode in ['generation', 'auto']:
