@@ -116,7 +116,7 @@ You can read the columns before each column starting with `order-`, which contai
 Please check `example_generator.py` for datailed information.
 
 ## 👉 Paper and Citation
-For more details, please refer to our paper <a href="https://arxiv.org/abs/">here</a>.
+For more details, please refer to our paper <a href="https://arxiv.org/abs/2308.03656">here</a>.
 
 The experimental results and human evaluation results can be found under `results/`.
 
@@ -132,7 +132,7 @@ If you find our paper&tool interesting and useful, please feel free to give us a
                Zhaopeng Tu and
                Michael R. Lyu},
   title     = {Emotionally Numb or Empathetic? Evaluating How {LLM}s Feel Using Emotion{B}ench},
-  journal   = {arXiv preprint arXiv:},
+  journal   = {arXiv preprint arXiv:2308.03656},
   year      = {2023}
 }
 ```
