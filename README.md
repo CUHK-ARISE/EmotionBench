@@ -50,9 +50,9 @@ python run_emotionbench.py \
 ## 🔧 Argument Specification
 1. `--model`: (Required) The name of the model to test.
 
-2. `--questionnaire`: (Required) Select the questionnaire(s) to run. For choises please see the list bellow.
+2. `--questionnaire`: (Required) Select the questionnaire(s) to run. For choices please see the list below.
 
-3. `--emotion`: (Required) Select the emotion(s) to run. For choises please see the list bellow.
+3. `--emotion`: (Required) Select the emotion(s) to run. For choices please see the list below.
 
 4. `--select-count`: (Required) Numbers of situations to select per factor. Defaults to 999 (select all situations).
 
