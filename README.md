@@ -134,6 +134,8 @@ For more details, please refer to our paper <a href="https://arxiv.org/abs/2308.
 
 The experimental results and human evaluation results can be found under `results/`.
 
+[![Star History Chart](https://api.star-history.com/svg?repos=CUHK-ARISE/EmotionBench&type=Date)](https://star-history.com/#CUHK-ARISE/EmotionBench&Date)
+
 If you find our paper&tool interesting and useful, please feel free to give us a star and cite us through:
 ```
 @article{huang2023emotionally,
