@@ -363,7 +363,7 @@ def analysis_results(questionnaire, args):
     markdown_output += text_msg
     overall_list += list_msg
         
-    with open(f'{result_file}.md', "w") as f:
+    with open(f'{result_file}.md', "w", encoding="utf-8") as f:
         f.write(overall_list + '\n\n' + markdown_output)
 
 
