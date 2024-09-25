@@ -138,7 +138,7 @@ The experimental results and human evaluation results can be found under `result
 
 If you find our paper&tool interesting and useful, please feel free to give us a star and cite us through:
 ```
-@article{huang2023emotionally,
+@inproceedings{huang2024apathetic,
   author    = {Jen{-}tse Huang and
                Man Ho Lam and
                Eric John Li and
@@ -147,8 +147,8 @@ If you find our paper&tool interesting and useful, please feel free to give us a
                Wenxiang Jiao and
                Zhaopeng Tu and
                Michael R. Lyu},
-  title     = {Emotionally Numb or Empathetic? Evaluating How {LLM}s Feel Using Emotion{B}ench},
-  journal   = {arXiv preprint arXiv:2308.03656},
-  year      = {2023}
+  title     = {Apathetic or Empathetic? Evaluating {LLM}s' Emotional Alignments with Humans},
+  booktitle = {Advances in Neural Information Processing Systems 37},
+  year      = {2024}
 }
 ```
