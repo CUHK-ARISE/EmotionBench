@@ -19,6 +19,10 @@
 
 Benchmarking LLMs' Empathy Ability.
 
+**UPDATES**
+
+[Sep 25 2024]: EmotionBench is accepted to **NeurIPS 2024**
+
 ## 🛠️ Usage
 ✨An example run:
 ```
