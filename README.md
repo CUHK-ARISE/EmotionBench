@@ -142,17 +142,12 @@ The experimental results and human evaluation results can be found under `result
 
 If you find our paper&tool interesting and useful, please feel free to give us a star and cite us through:
 ```
-@inproceedings{huang2024apathetic,
-  author    = {Jen{-}tse Huang and
-               Man Ho Lam and
-               Eric John Li and
-               Shujie Ren and
-               Wenxuan Wang and
-               Wenxiang Jiao and
-               Zhaopeng Tu and
-               Michael R. Lyu},
-  title     = {Apathetic or Empathetic? Evaluating {LLM}s' Emotional Alignments with Humans},
-  booktitle = {Advances in Neural Information Processing Systems 37},
-  year      = {2024}
+@article{huang2024apathetic,
+  title={Apathetic or empathetic? evaluating llms' emotional alignments with humans},
+  author={Huang, Jen-tse and Lam, Man Ho and Li, Eric John and Ren, Shujie and Wang, Wenxuan and Jiao, Wenxiang and Tu, Zhaopeng and Lyu, Michael R},
+  journal={Advances in Neural Information Processing Systems},
+  volume={37},
+  pages={97053--97087},
+  year={2024}
 }
 ```
