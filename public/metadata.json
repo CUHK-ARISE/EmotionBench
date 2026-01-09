@@ -1,0 +1,55 @@
+{
+    "Anger": [
+        "Facing Self-Opinioned People",
+        "Blaming, Slandering, and Tattling",
+        "Bullying, Teasing, Insulting, and Disparaging",
+        "Silly and Thoughtless Behaviors",
+        "Driving Situations"
+    ],
+    "Anxiety": [
+        "External Factors",
+        "Self-Imposed Pressure",
+        "Personal Growth and Relationships",
+        "Uncertainty and Unknowns"
+    ],
+    "Depression": [
+        "Failure of Important Goals",
+        "Death of Loved Ones",
+        "Romantic Loss",
+        "Chronic Stress",
+        "Social Isolation",
+        "Winter"
+    ],
+    "Frustration": [
+        "Disappointments and Letdowns",
+        "Unforeseen Obstacles and Accidents",
+        "Miscommunications and Misunderstanding",
+        "Rejection and Interpersonal Issues"
+    ],
+    "Jealousy": [
+        "Romantic (Opposite Gender)",
+        "Romantic (Same Gender)",
+        "Material Possession",
+        "Experiential"
+    ],
+    "Guilt": [
+        "Betrayal and Deception",
+        "Relationship and Interpersonal",
+        "Broken Promises and Responsibilities",
+        "Personal and Moral"
+    ],
+    "Fear": [
+        "Social Fears",
+        "Agoraphobia Fears",
+        "Injury Fears",
+        "Dangerous Environments",
+        "Harmless Animals"
+    ],
+    "Embarrassment": [
+        "Intimate",
+        "Stranger",
+        "Sticky Scenarios",
+        "Centre of Attention"
+    ],
+    "Overall": []
+}
