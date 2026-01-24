@@ -139,8 +139,14 @@
         class="absolute top-2 right-0 flex items-center justify-center rounded bg-gray-200 text-gray-700 hover:bg-gray-300 transition"
         style="width: 85px; height: 30px; font-size: 12px;"
       >
-        Copy
-      </button>
+        {{ copied ? 'Copied!' : 'Copy' }}
+        </button>
+        <div
+          v-if="copied"
+          class="absolute top-2 right-24 px-3 py-1 bg-green-500 text-white text-sm rounded shadow-lg animate-bounce"
+        >
+          ✓ Copied!
+        </div>
       <pre class="w-full bg-gray-100 p-4 border border-gray-300 text-sm font-mono text-left rounded-xl overflow-x-auto"><code ref="bib">@article{huang2024apathetic,
   title={Apathetic or empathetic? evaluating llms' emotional alignments with humans},
   author={Huang, Jen-tse and Lam, Man Ho and Li, Eric John and Ren, Shujie and 
@@ -150,6 +156,28 @@
   pages={97053--97087},
   year={2024}
 }</code></pre>
+    </div>
+
+    <!-- More Leaderboards Section -->
+    <div class="mt-16 mb-8">
+      <h2 class="text-4xl font-bold mt-12 mb-4">🤗 More Leaderboards</h2>
+      <p class="text-left mb-4">
+        Exploring more excellent benchmarks and leaderboards from ARISE Lab:
+      </p>
+      <ul class="list-disc list-inside leading-relaxed text-left">
+        <li>
+          <a href="https://cuhk-arise.github.io/PsychoBench/" target="_blank" class="text-blue-600 hover:underline">PsychoBench Leaderboard</a>
+          <span class="ml-2 px-2 py-0.5 text-xs font-semibold rounded bg-orange-100 text-orange-700 border border-orange-300">ICLR'24 Oral</span>
+        </li>
+        <li>
+          <a href="https://cuhk-arise.github.io/GAMABench/" target="_blank" class="text-blue-600 hover:underline">GAMA-Bench Leaderboard</a>
+          <span class="ml-2 px-2 py-0.5 text-xs font-semibold rounded bg-orange-100 text-orange-700 border border-orange-300">ICLR'25 Poster</span>
+        </li>
+        <li>
+          <a href="https://cuhk-arise.github.io/CodeCrash/" target="_blank" class="text-blue-600 hover:underline">CodeCrash Leaderboard</a>
+          <span class="ml-2 px-2 py-0.5 text-xs font-semibold rounded bg-green-100 text-green-700 border border-green-300">NeurIPS'25 Poster</span>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -164,6 +192,7 @@ const sortOrder = ref('desc')
 const selectedEmotion = ref('Overall')
 const selectedFactors = ref([])
 const viewMode = ref('actual')
+const copied = ref(false)
 
 const columns = computed(() => {
   if (viewMode.value === 'actual') {
@@ -335,6 +364,10 @@ const bib = ref(null)
 function copyBib() {
   if (bib.value) {
     navigator.clipboard.writeText(bib.value.textContent)
+      copied.value = true
+      setTimeout(() => {
+        copied.value = false
+      }, 2000)
   }
 }
 

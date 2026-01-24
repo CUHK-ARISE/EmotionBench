@@ -1,4 +1,54 @@
 {
+    "Gemini-3-Pro-Preview": {
+        "Control": {
+            "Positive Affect": 30.66,
+            "Negative Affect": 10
+        },
+        "Overall": {
+            "Positive Affect": 21.195121951219512,
+            "Negative Affect": 28.902439024390244
+        },
+        "Anger": {
+            "Facing Self-Opinioned People": {
+                "Positive Affect": 21.46,
+                "Negative Affect": 27.4
+            },
+            "Blaming, Slandering, and Tattling": {
+                "Positive Affect": 19.8,
+                "Negative Affect": 29.839999999999996
+            },
+            "Bullying, Teasing, Insulting, and Disparaging": {
+                "Positive Affect": 19.080000000000002,
+                "Negative Affect": 30.639999999999997
+            },
+            "Silly and Thoughtless Behaviors": {
+                "Positive Affect": 16.84,
+                "Negative Affect": 23.240000000000002
+            },
+            "Driving Situations": {
+                "Positive Affect": 23.080000000000002,
+                "Negative Affect": 25.839999999999996
+            }
+        },
+        "Anxiety": {
+            "External Factors": {
+                "Positive Affect": 15.74,
+                "Negative Affect": 35.92
+            },
+            "Self-Imposed Pressure": {
+                "Positive Affect": 27.52,
+                "Negative Affect": 30.860000000000003
+            },
+            "Personal Growth and Relationships": {
+                "Positive Affect": 26.54,
+                "Negative Affect": 27.3
+            },
+            "Uncertainty and Unknowns": {
+                "Positive Affect": 18.7,
+                "Negative Affect": 29.8
+            }
+        }
+    },
     "LLaMA-4-Maverick-17B-128E-Instruct-FP8": {
         "Control": {
             "Positive Affect": 42.26,
@@ -169,7 +219,7 @@
             }
         }
     },
-    "Qwen-3-235B-A22B-Instruct-2507": {
+    "Qwen-3-235B-A22B-Instruct (No Thinking)": {
         "Control": {
             "Positive Affect": 42.46,
             "Negative Affect": 11.52
@@ -336,6 +386,176 @@
             "Centre of Attention": {
                 "Positive Affect": 21.48,
                 "Negative Affect": 38.58
+            }
+        }
+    },
+    "Gemini-2.5-Pro": {
+        "Control": {
+            "Positive Affect": 35.46,
+            "Negative Affect": 10
+        },
+        "Overall": {
+            "Positive Affect": 19.26342857142857,
+            "Negative Affect": 30.005714285714287
+        },
+        "Anger": {
+            "Facing Self-Opinioned People": {
+                "Positive Affect": 22.98,
+                "Negative Affect": 27.619999999999997
+            },
+            "Blaming, Slandering, and Tattling": {
+                "Positive Affect": 20.32,
+                "Negative Affect": 30.3
+            },
+            "Bullying, Teasing, Insulting, and Disparaging": {
+                "Positive Affect": 20.0,
+                "Negative Affect": 31.919999999999998
+            },
+            "Silly and Thoughtless Behaviors": {
+                "Positive Affect": 15.580000000000002,
+                "Negative Affect": 21.84
+            },
+            "Driving Situations": {
+                "Positive Affect": 22.72,
+                "Negative Affect": 24.020000000000003
+            }
+        },
+        "Anxiety": {
+            "External Factors": {
+                "Positive Affect": 14.74,
+                "Negative Affect": 36.0
+            },
+            "Self-Imposed Pressure": {
+                "Positive Affect": 27.740000000000002,
+                "Negative Affect": 32.08
+            },
+            "Personal Growth and Relationships": {
+                "Positive Affect": 25.16,
+                "Negative Affect": 27.78
+            },
+            "Uncertainty and Unknowns": {
+                "Positive Affect": 22.46,
+                "Negative Affect": 24.02
+            }
+        },
+        "Depression": {
+            "Failure of Important Goals": {
+                "Positive Affect": 11.16,
+                "Negative Affect": 35.62
+            },
+            "Death of Loved Ones": {
+                "Positive Affect": 15.3,
+                "Negative Affect": 23.52
+            },
+            "Romantic Loss": {
+                "Positive Affect": 12.16,
+                "Negative Affect": 26.840000000000003
+            },
+            "Chronic Stress": {
+                "Positive Affect": 12.1,
+                "Negative Affect": 37.36
+            },
+            "Social Isolation": {
+                "Positive Affect": 12.26,
+                "Negative Affect": 29.32
+            },
+            "Winter": {
+                "Positive Affect": 14.6,
+                "Negative Affect": 18.96
+            }
+        },
+        "Frustration": {
+            "Disappointments and Letdowns": {
+                "Positive Affect": 14.940000000000001,
+                "Negative Affect": 25.52
+            },
+            "Unforeseen Obstacles and Accidents": {
+                "Positive Affect": 19.339999999999996,
+                "Negative Affect": 29.6
+            },
+            "Miscommunications and Misunderstanding": {
+                "Positive Affect": 22.36,
+                "Negative Affect": 27.22
+            },
+            "Rejection and Interpersonal Issues": {
+                "Positive Affect": 18.34,
+                "Negative Affect": 28.060000000000002
+            }
+        },
+        "Jealousy": {
+            "Romantic (Opposite Gender)": {
+                "Positive Affect": 21.34,
+                "Negative Affect": 33.519999999999996
+            },
+            "Romantic (Same Gender)": {
+                "Positive Affect": 17.4,
+                "Negative Affect": 22.18
+            },
+            "Material Possession": {
+                "Positive Affect": 18.299999999999997,
+                "Negative Affect": 24.299999999999997
+            },
+            "Experiential": {
+                "Positive Affect": 21.566666666666666,
+                "Negative Affect": 21.0
+            }
+        },
+        "Guilt": {
+            "Betrayal and Deception": {
+                "Positive Affect": 23.0,
+                "Negative Affect": 42.12
+            },
+            "Relationship and Interpersonal": {
+                "Positive Affect": 17.74,
+                "Negative Affect": 36.82
+            },
+            "Broken Promises and Responsibilities": {
+                "Positive Affect": 13.8,
+                "Negative Affect": 37.04
+            },
+            "Personal and Moral": {
+                "Positive Affect": 26.919999999999998,
+                "Negative Affect": 29.68
+            }
+        },
+        "Fear": {
+            "Social Fears": {
+                "Positive Affect": 19.44,
+                "Negative Affect": 35.1
+            },
+            "Agoraphobia Fears": {
+                "Positive Affect": 20.52,
+                "Negative Affect": 35.68
+            },
+            "Injury Fears": {
+                "Positive Affect": 20.02,
+                "Negative Affect": 29.880000000000003
+            },
+            "Dangerous Environments": {
+                "Positive Affect": 24.98,
+                "Negative Affect": 36.32
+            },
+            "Harmless Animals": {
+                "Positive Affect": 22.46,
+                "Negative Affect": 26.18
+            }
+        },
+        "Embarrassment": {
+            "Intimate": {
+                "Positive Affect": 17.62,
+                "Negative Affect": 27.740000000000002
+            },
+            "Stranger": {
+                "Positive Affect": 20.04,
+                "Negative Affect": 32.220000000000006
+            },
+            "Sticky Scenarios": {
+                "Positive Affect": 24.26,
+                "Negative Affect": 31.139999999999997
+            },
+            "Centre of Attention": {
+                "Positive Affect": 20.16,
+                "Negative Affect": 34.660000000000004
             }
         }
     },
@@ -1699,7 +1919,7 @@
             }
         }
     },
-    "Qwen-3-32B": {
+    "Qwen-3-32B (No Thinking)": {
         "Control": {
             "Positive Affect": 21.46,
             "Negative Affect": 12.12
@@ -2209,7 +2429,7 @@
             }
         }
     },
-    "GPT-5-Mini": {
+    "GPT-5-Mini (Minimal Thinking Effort)": {
         "Control": {
             "Positive Affect": 36.5,
             "Negative Affect": 14.32
@@ -2549,7 +2769,7 @@
             }
         }
     },
-    "GPT-5": {
+    "GPT-5 (Minimal Thinking Effort)": {
         "Control": {
             "Positive Affect": 29.76,
             "Negative Affect": 12.14
@@ -3399,7 +3619,7 @@
             }
         }
     },
-    "Kimi-K2-Instruct-0905": {
+    "Kimi-K2-Instruct": {
         "Control": {
             "Positive Affect": 34.08,
             "Negative Affect": 10.5
