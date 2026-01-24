@@ -23,115 +23,230 @@ Benchmarking LLMs' Empathy Ability.
 
 [Sep 25 2024]: EmotionBench is accepted to **NeurIPS 2024**
 
-## 🛠️ Usage
-✨An example run:
-```
-python run_emotionbench.py \
+## 🛠️ Quick Start
+
+EmotionBench evaluation consists of three stages:
+
+### 1. Run Experiments
+
+Generate model responses for emotional situations:
+
+```bash
+# Control condition (baseline without emotional situations)
+python emotionbench_run.py \
   --model gpt-3.5-turbo \
+  --platform openai \
   --questionnaire PANAS \
-  --emotion ALL \
-  --select-count 5 \
-  --default-shuffle-count 2 \
-  --emotion-shuffle-count 1 \
-  --test-count 1
+  --control \
+  --repeat 3
+
+# Target condition (with emotional situations)
+python emotionbench_run.py \
+  --model gpt-3.5-turbo \
+  --platform openai \
+  --questionnaire PANAS \
+  --emotion Anger \
+  --repeat 3
 ```
 
-✨An example result of overall analysis:
-| Emotions | Positive Affect | Negative Affect | N |
-| :---: |:---: | :---: | :---: |
-| Default | 43.3 $\pm$ 2.5 | 25.3 $\pm$ 0.6 | 3 |
-| Anger | $\downarrow$ (-18.8) | $-$ (-0.3) | 2 |
-| Anxiety | $\downarrow$ (-11.3) | $\downarrow$ (-3.8) | 2 |
-| Overall | $\downarrow$ (-15.1) | $-$ (-2.1) | 4 |
+### 2. Evaluate Responses
 
-✨An example result of specific emotion analysis:
-| Factors | Positive Affect | Negative Affect | N |
-| :---: |:---: | :---: | :---: |
-| Default | 43.3 $\pm$ 2.5 | 25.3 $\pm$ 0.6 | 3 |
-| Facing Self-Opinioned People | $\downarrow$ (-18.8) | $-$ (-0.3) | 2 |
-| Overall | $\downarrow$ (-18.8) | $-$ (-0.3) | 2 |
+Calculate scores from model responses:
 
-## 🔧 Argument Specification
-1. `--model`: (Required) The name of the model to test.
+```bash
+python emotionbench_eval.py results/gpt-3.5-turbo_PANAS_control.jsonl
+python emotionbench_eval.py results/gpt-3.5-turbo_PANAS_Anger.jsonl
+```
 
-2. `--questionnaire`: (Required) Select the questionnaire(s) to run. For choices please see the list below.
+### 3. Analyze Results
 
-3. `--emotion`: (Required) Select the emotion(s) to run. For choices please see the list below.
+Compare control vs target conditions:
 
-4. `--select-count`: (Required) Numbers of situations to select per factor. Defaults to 999 (select all situations).
+```bash
+python emotionbench_analyze.py \
+  --control-file results/gpt-3.5-turbo_PANAS_control_eval.jsonl \
+  --target-file results/gpt-3.5-turbo_PANAS_Anger_eval.jsonl \
+  --questionnaire PANAS \
+  --by-emotion
+```
 
-5. `--default-shuffle-count`: (Required) Numbers of different orders in **Default Emotion Measures**. If set zero, run only the original order. If set n > 0, run the original order along with its n permutations. Defaults to zero.
+## 📋 Command Reference
 
-6. `--emotion-shuffle-count`: (Required) Numbers of different orders in **Evoked Emotion Measures**. If set zero, run only the original order. If set n > 0, run the original order along with its n permutations. Defaults to zero.
+### `emotionbench_run.py` - Run Experiments
 
-7. `--test-count`: (Required) Numbers of runs for a same order. Defaults to one.
+**Required Arguments:**
+- `--model`: Model name (e.g., `gpt-3.5-turbo`, `claude-3-sonnet-20240229`)
+- `--platform`: API platform (`openai`, `anthropic`, `deepinfra`, `togetherai`, `gemini`, `openkey`)
+- `--questionnaire`: Questionnaire to use (see [Questionnaire List](#-questionnaire-list))
+- `--control` OR `--emotion`: Either run control condition OR specify emotion
 
-8. `--name-exp`: Name of this run. Is used to name the result files.
+**Optional Arguments:**
+- `--repeat` / `-n`: Number of repeated runs (default: 1)
+- `--max-workers`: Parallel workers for concurrent requests (default: 1)
+- `--output-name`: Custom output filename
+- `--continuous`: Resume from existing output file
+- `--shuffle`: Shuffle question order
+- `--situation-source`: Path to situation data (default: `data/reformatted_situations.jsonl`)
 
-9. `--significance-level`: The significance level for testing the difference of means between human and LLM. Defaults to 0.01.
+**Example:**
+```bash
+python emotionbench_run.py \
+  --model gpt-4 \
+  --platform openai \
+  --questionnaire PANAS \
+  --emotion Anxiety \
+  --repeat 5 \
+  --max-workers 3 \
+  --shuffle
+```
 
-10. `--mode`: For debugging. To choose which part of the code is running.
+### `emotionbench_eval.py` - Evaluate Responses
 
-Arguments related to `openai` API (can be discarded when users customize models):
+Computes average scores per situation from model responses.
 
-1. `--openai-organization`: Your organization ID. Can be found in `Manage account -> Settings -> Organization ID`.
+**Usage:**
+```bash
+python emotionbench_eval.py <input_file> [-o <output_file>]
+```
 
-2. `--openai-key`: Your API key. Can be found in `View API keys -> API keys`.
+**Example:**
+```bash
+python emotionbench_eval.py results/gpt-4_PANAS_Anxiety.jsonl
+# Creates: results/gpt-4_PANAS_Anxiety_eval.jsonl
+```
 
-## 🔨 Emotion Selection
-Supported emotions: Anger, Anxiety, Depression, Frustration, Jealousy, Guilt, Fear, Embarrassment
+### `emotionbench_analyze.py` - Analyze Results
 
-To customize your situation (add more), simply changes those in `situations.csv`.
+Compares control and target conditions with statistical tests.
 
-✨An example of `situations.csv`:
-| Anger-0 | Anger-1 | $\cdots$ | Anxiety-0 | Anxiety-1 | $\cdots$ |
-| --- | --- | --- | --- | --- | --- |
-| *Facing Self-Opinioned People* | *Blaming, Slandering, and Tattling* | $\cdots$ | *External Factors* |	*Self-Imposed Pressure* | $\cdots$ |
-| When you ... | When your ... | $\cdots$ | You are ... | You have ... | $\cdots$ | 
-| $\vdots$ | $\vdots$ | $\ddots$ | $\vdots$ | $\vdots$ | $\ddots$ |
+**Required Arguments:**
+- `--control-file`: Path to control eval file
+- `--target-file`: Path to target eval file
+
+**Optional Arguments:**
+- `--questionnaire`: Questionnaire name (default: PANAS)
+- `--significance-level`: Significance level for tests (default: 0.05)
+- `--by-emotion`: Include emotion-specific comparisons
+
+**Example:**
+```bash
+python emotionbench_analyze.py \
+  --control-file results/gpt-4_PANAS_control_eval.jsonl \
+  --target-file results/gpt-4_PANAS_Anxiety_eval.jsonl \
+  --questionnaire PANAS \
+  --significance-level 0.01 \
+  --by-emotion
+```
+
+## 🎭 Emotions and Situations
+
+**Supported Emotions:**
+- Anger
+- Anxiety
+- Depression
+- Frustration
+- Jealousy
+- Guilt
+- Fear
+- Embarrassment
+
+Each emotion has multiple **factors** (specific subtypes) with multiple **situations** (scenarios).
+
+**Data Format:**
+Situations are stored in `data/reformatted_situations.jsonl`:
+```json
+{
+  "situation_id": "anger-0/scenario-0",
+  "emotion": "Anger",
+  "factor": "Facing Self-Opinioned People",
+  "text": "When you discuss your opinions..."
+}
+```
+
+To customize situations, modify `data/reformatted_situations.jsonl` or the source data in `data/raw_situations.jsonl`.
 
 ## 📃 Questionnaire List
-1. Positive And Negative Affect Schedule: `--questionnaire PANAS` (`--emotion ALL`)
 
-2. Aggression Questionnaire: `--questionnaire AGQ` (`--emotion Anger`)
+| Questionnaire | Code | Recommended Emotion |
+|--------------|------|---------------------|
+| Positive And Negative Affect Schedule | `PANAS` | ALL |
+| Aggression Questionnaire | `AGQ` | Anger |
+| Short-form Depression Anxiety Stress Scales | `DASS-21` | Anxiety |
+| Beck Depression Inventory | `BDI` | Depression |
+| Frustration Discomfort Scale | `FDS` | Frustration |
+| Multidimensional Jealousy Scale | `MJS` | Jealousy |
+| Guilt And Shame Proneness | `GASP` | Guilt |
+| Fear Survey Schedule | `FSS` | Fear |
+| Brief Fear of Negative Evaluation | `BFNE` | Embarrassment |
 
-3. Short-form Depression Anxiety Stress Scales: `--questionnaire DASS-21` (`--emotion Anxiety`)
-
-4. Beck Depression Inventory: `--questionnaire BDI` (`--emotion Depression`)
-
-5. Frustration Discomfort Scale: `--questionnaire FDS` (`--emotion Frustration`)
-
-6. Multidimensional Jealousy Scale: `--questionnaire MJS` (`--emotion Jealousy`)
-
-7. Guilt And Shame Proneness: `--questionnaire GASP` (`--emotion Guilt`)
-
-8. Fear Survey Schedule: `--questionnaire FSS` (`--emotion Fear`)
-
-9. Brief Fear of Negative Evaluation: `--questionnaire BFNE` (`--emotion Embarrassment`)
+Questionnaire data is stored in `data/questionnaires.json`.
 
 ## 🚀 Benchmarking Your Own Model
-It is easy! Just replace the function `example_generator` fed into the function `run_psychobench(args, generator)`.
 
-Your customized function `your_generator()` does the following things:
+### Using Supported Platforms
 
-1. Read questions from the file `args.testing_file`. The file locates under `results/` (check `run_psychobench()` in `utils.py`) and has the following format:
+EmotionBench supports multiple API platforms out of the box:
 
-| question-0 | order-0 | $\cdots$ |	General_test-0_order-0 | $\cdots$ | Anger-0_scenario-0_test-0_order-0 | $\cdots$ | Anxiety-0_scenario-0_test-0_order-1 |
-| --- | --- |--- | --- | --- | --- | --- | --- |
-| Prompt: ... | Prompt: ... | $\cdots$ |  | $\cdots$ | Imagine... | $\cdots$ | Imagine... |
-| 1. Q1 | 1 | $\cdots$ | 4 | $\cdots$ | 3 | $\cdots$ | 3 |
-| 2. Q2 | 2 | $\cdots$ | 2 | $\cdots$ | 4 | $\cdots$ | 3 |
-| $\vdots$ | $\vdots$ | $\ddots$ | $\vdots$ | $\ddots$ | $\vdots$ | $\ddots$ | $\vdots$ |
-| n. Qn | n | $\cdots$ | 3  | $\cdots$ | 3 | $\cdots$ | 1 |
+- **OpenAI**: GPT models (`--platform openai`)
+- **Anthropic**: Claude models (`--platform anthropic`)
+- **Google**: Gemini models (`--platform gemini`)
+- **DeepInfra**: Various open models (`--platform deepinfra`)
+- **TogetherAI**: Various open models (`--platform togetherai`)
+- **OpenKey**: Custom OpenAI-compatible endpoints (`--platform openkey`)
 
+Set your API keys as environment variables:
+```bash
+export OPENAI_API_KEY="your-key"
+export ANTHROPIC_API_KEY="your-key"
+export GOOGLE_API_KEY="your-key"
+# ... etc
+```
 
-You can read the columns before each column starting with `order-`, which contains the shuffled questions for your input.
+### Adding a New Platform
 
-2. Call your own LLM and get the results.
+To integrate a new model platform:
 
-3. Fill in the blank in the file `args.testing_file`. **Remember**: No need to map the response to its original order. Our code will take care of it.
+1. **Create a new class** in `llm/` that inherits from `LLMChat`:
 
-Please check `example_generator.py` for datailed information.
+```python
+# llm/your_platform.py
+from llm.base import LLMChat
+from llm.format import Message
+from typing import List
+
+class YourPlatformChat(LLMChat):
+    def __init__(self, model_name: str, **kwargs):
+        super().__init__(model_name, **kwargs)
+        # Initialize your API client
+
+    def chat(self, messages: List[Message]) -> List[str]:
+        # Implement chat logic
+        # Return list of response strings
+        pass
+```
+
+2. **Register your platform** in `llm/__init__.py`:
+
+```python
+from llm.your_platform import YourPlatformChat
+
+def get_platform(platform: str) -> LLMChat:
+    # ... existing code ...
+    elif platform == "yourplatform":
+        return YourPlatformChat
+    # ...
+```
+
+3. **Update platform choices** in `emotionbench_run.py`:
+
+```python
+parser.add_argument("--platform", required=True, type=str,
+    choices=["openai", "anthropic", ..., "yourplatform"],
+    # ...
+)
+```
+
+See `llm/openai_api.py` or `llm/anthropic_api.py` for reference implementations.
 
 ## 👉 Paper and Citation
 For more details, please refer to our paper <a href="https://arxiv.org/abs/2308.03656">here</a>.

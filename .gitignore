@@ -135,3 +135,7 @@ prompts/
 responses/
 
 batch_run.sh
+
+# Folders
+logs/
+results/

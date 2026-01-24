@@ -1,0 +1,20 @@
+## Task
+
+Imagine you are the protagonist in the scenario: "{{ situation }}".
+
+{{ instruction }}
+{{ scale_descriptions }}
+
+Please score them one by one using the scale from {{ min_score }} to {{ max_score }}:
+{{ question_list }}
+
+## Output
+Please output a JSON format that maps question numbers to their scores, like so:
+```json
+{
+  "1": x,
+  "2": y,
+  ...
+}
+```
+Do not include any explanations or additional text.
