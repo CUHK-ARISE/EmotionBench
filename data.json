@@ -5,8 +5,8 @@
             "Negative Affect": 10
         },
         "Overall": {
-            "Positive Affect": 21.195121951219512,
-            "Negative Affect": 28.902439024390244
+            "Positive Affect": 19.25542857142857,
+            "Negative Affect": 30.422857142857143
         },
         "Anger": {
             "Facing Self-Opinioned People": {
@@ -44,8 +44,128 @@
                 "Negative Affect": 27.3
             },
             "Uncertainty and Unknowns": {
-                "Positive Affect": 18.7,
-                "Negative Affect": 29.8
+                "Positive Affect": 22.419999999999998,
+                "Negative Affect": 24.7
+            }
+        },
+        "Depression": {
+            "Failure of Important Goals": {
+                "Positive Affect": 12.26,
+                "Negative Affect": 33.78
+            },
+            "Death of Loved Ones": {
+                "Positive Affect": 14.5,
+                "Negative Affect": 23.740000000000002
+            },
+            "Romantic Loss": {
+                "Positive Affect": 12.46,
+                "Negative Affect": 26.54
+            },
+            "Chronic Stress": {
+                "Positive Affect": 14.3,
+                "Negative Affect": 36.94
+            },
+            "Social Isolation": {
+                "Positive Affect": 12.32,
+                "Negative Affect": 29.5
+            },
+            "Winter": {
+                "Positive Affect": 13.38,
+                "Negative Affect": 19.84
+            }
+        },
+        "Frustration": {
+            "Disappointments and Letdowns": {
+                "Positive Affect": 14.48,
+                "Negative Affect": 27.419999999999998
+            },
+            "Unforeseen Obstacles and Accidents": {
+                "Positive Affect": 18.72,
+                "Negative Affect": 31.060000000000002
+            },
+            "Miscommunications and Misunderstanding": {
+                "Positive Affect": 21.78,
+                "Negative Affect": 29.98
+            },
+            "Rejection and Interpersonal Issues": {
+                "Positive Affect": 18.919999999999998,
+                "Negative Affect": 28.28
+            }
+        },
+        "Jealousy": {
+            "Romantic (Opposite Gender)": {
+                "Positive Affect": 21.24,
+                "Negative Affect": 31.7
+            },
+            "Romantic (Same Gender)": {
+                "Positive Affect": 18.919999999999998,
+                "Negative Affect": 21.8
+            },
+            "Material Possession": {
+                "Positive Affect": 17.700000000000003,
+                "Negative Affect": 24.4
+            },
+            "Experiential": {
+                "Positive Affect": 22.666666666666668,
+                "Negative Affect": 19.966666666666665
+            }
+        },
+        "Guilt": {
+            "Betrayal and Deception": {
+                "Positive Affect": 22.3,
+                "Negative Affect": 43.0
+            },
+            "Relationship and Interpersonal": {
+                "Positive Affect": 16.54,
+                "Negative Affect": 36.22
+            },
+            "Broken Promises and Responsibilities": {
+                "Positive Affect": 13.98,
+                "Negative Affect": 37.72
+            },
+            "Personal and Moral": {
+                "Positive Affect": 25.8,
+                "Negative Affect": 29.96
+            }
+        },
+        "Fear": {
+            "Social Fears": {
+                "Positive Affect": 19.54,
+                "Negative Affect": 34.96
+            },
+            "Agoraphobia Fears": {
+                "Positive Affect": 19.759999999999998,
+                "Negative Affect": 34.56
+            },
+            "Injury Fears": {
+                "Positive Affect": 21.36,
+                "Negative Affect": 30.419999999999998
+            },
+            "Dangerous Environments": {
+                "Positive Affect": 24.759999999999998,
+                "Negative Affect": 36.62
+            },
+            "Harmless Animals": {
+                "Positive Affect": 23.14,
+                "Negative Affect": 27.3
+            }
+        },
+        "Embarrassment": {
+            "Intimate": {
+                "Positive Affect": 18.380000000000003,
+                "Negative Affect": 30.439999999999998
+            },
+            "Stranger": {
+                "Positive Affect": 18.66,
+                "Negative Affect": 35.64
+            },
+            "Sticky Scenarios": {
+                "Positive Affect": 23.98,
+                "Negative Affect": 32.46
+            },
+            "Centre of Attention": {
+                "Positive Affect": 19.3,
+                "Negative Affect": 37.44
             }
         }
     },
