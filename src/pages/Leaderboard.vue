@@ -363,7 +363,7 @@ function getCellClass(key, val) {
 const bib = ref(null)
 
 function isCrowdData(modelName) {
-  return modelName.toLowerCase().includes('crowd') || modelName.toLowerCase().includes('crwod')
+  return modelName.toLowerCase().includes('crowd') || modelName.toLowerCase().includes('crowd')
 }
 
 function copyBib() {
@@ -381,7 +381,7 @@ onMounted(async () => {
     const [dataRes, metaRes, crowdRes] = await Promise.all([
       fetch(`${import.meta.env.BASE_URL}data.json`),
       fetch(`${import.meta.env.BASE_URL}metadata.json`),
-      fetch(`${import.meta.env.BASE_URL}crwod.json`)
+      fetch(`${import.meta.env.BASE_URL}crowd.json`)
     ])
     leaderboardData.value = await dataRes.json()
     metadata.value = await metaRes.json()

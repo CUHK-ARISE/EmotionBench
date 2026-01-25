@@ -2,12 +2,12 @@ import json
 
 def convert_affect_values():
     # Read the JSON file
-    with open('public/crwod.json', 'r') as f:
+    with open('public/crowd.json', 'r') as f:
         data = json.load(f)
 
     # Get control values
-    control_positive = data['Crwod']['Control']['Positive Affect']
-    control_negative = data['Crwod']['Control']['Negative Affect']
+    control_positive = data['Crowd']['Control']['Positive Affect']
+    control_negative = data['Crowd']['Control']['Negative Affect']
 
     print(f"Control values - Positive: {control_positive}, Negative: {control_negative}")
 
@@ -29,13 +29,13 @@ def convert_affect_values():
                     process_entry(value, f"{path}/{key}" if path else key)
 
     # Process all entries except Control
-    for emotion_key in data['Crwod']:
+    for emotion_key in data['Crowd']:
         if emotion_key != 'Control':
             print(f"\nProcessing {emotion_key}:")
-            process_entry(data['Crwod'][emotion_key], emotion_key)
+            process_entry(data['Crowd'][emotion_key], emotion_key)
 
     # Write back to file
-    with open('public/crwod.json', 'w') as f:
+    with open('public/crowd.json', 'w') as f:
         json.dump(data, f, indent=4)
 
     print('\nConversion complete! File updated.')
