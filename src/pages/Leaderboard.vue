@@ -188,7 +188,7 @@ import { ref, computed, onMounted } from 'vue'
 
 const leaderboardData = ref({})
 const metadata = ref({})
-const sortBy = ref('negativeAffect')
+const sortBy = ref('negativeAffectDiff')
 const sortOrder = ref('desc')
 const selectedEmotion = ref('Overall')
 const selectedFactors = ref([])
