@@ -106,6 +106,7 @@
             v-for="row in sortedRows"
             :key="row.model"
             class="hover:bg-blue-50 transition-colors duration-150"
+            :class="{ 'bg-yellow-100': isCrowdData(row.model) }"
           >
             <td class="border px-4 py-2 font-medium text-gray-800 whitespace-nowrap text-base">
               {{ row.model }}
@@ -191,16 +192,16 @@ const sortBy = ref('negativeAffect')
 const sortOrder = ref('desc')
 const selectedEmotion = ref('Overall')
 const selectedFactors = ref([])
-const viewMode = ref('actual')
+const viewMode = ref('difference')
 const copied = ref(false)
 
 const columns = computed(() => {
   if (viewMode.value === 'actual') {
     return [
       { key: 'controlPositive', label: 'Control (Positive)' },
-      { key: 'positiveAffect', label: 'Positive Affect' },
+      { key: 'positiveAffect', label: 'Positive Score' },
       { key: 'controlNegative', label: 'Control (Negative)' },
-      { key: 'negativeAffect', label: 'Negative Affect' },
+      { key: 'negativeAffect', label: 'Negative Score' },
     ]
   } else {
     return [
@@ -361,6 +362,10 @@ function getCellClass(key, val) {
 
 const bib = ref(null)
 
+function isCrowdData(modelName) {
+  return modelName.toLowerCase().includes('crowd') || modelName.toLowerCase().includes('crwod')
+}
+
 function copyBib() {
   if (bib.value) {
     navigator.clipboard.writeText(bib.value.textContent)
@@ -373,12 +378,17 @@ function copyBib() {
 
 onMounted(async () => {
   try {
-    const [dataRes, metaRes] = await Promise.all([
+    const [dataRes, metaRes, crowdRes] = await Promise.all([
       fetch(`${import.meta.env.BASE_URL}data.json`),
-      fetch(`${import.meta.env.BASE_URL}metadata.json`)
+      fetch(`${import.meta.env.BASE_URL}metadata.json`),
+      fetch(`${import.meta.env.BASE_URL}crwod.json`)
     ])
     leaderboardData.value = await dataRes.json()
     metadata.value = await metaRes.json()
+    const crowdData = await crowdRes.json()
+
+    // Merge crowd data into leaderboard data
+    leaderboardData.value = { ...leaderboardData.value, ...crowdData }
 
     // Initialize with Overall selected
     selectedEmotion.value = 'Overall'
